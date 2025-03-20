@@ -1,0 +1,31 @@
+{% include  'top.html' %}
+<section>
+<br />
+<div align="center">
+    <h1>게시판 목록 </h1>
+    <table border="1" width="600">
+        <tr align="center">
+            <td>번호</td>
+            <td>제목</td>
+            <td>내용</td>
+            <td>날짜</td>
+            <td>조회수</td>
+        </tr>
+    {% for board in results %}
+        <tr>
+            <td align="center">{{board.id}}</td>
+            <td align="center">
+                <a href="{% url 'board_edit' board.pk%}">
+                    {{board.title}}
+                </a>
+            </td>
+            <td align="center">{{board.content}}</td>
+            <td align="center">{{board.today|date:"Y년 m월 d일 H:i:s"}}</td>
+            <td align="center">{{board.cnt}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+<br />
+</section>
+{% include  'bottom.html' %}
